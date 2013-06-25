@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SecretStringDB xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/SecretStringDBXMLSchema.xsd">
+	<Entry name="sample">
+		<String status="false" expire="2023-06-25T00:00:00+09:00"
+			create="2013-06-25T00:00:00+09:00" data="samplestringdatafalse" id="1" />
+		<String status="true" expire="2023-06-25T00:00:00+09:00"
+			create="2013-06-25T00:00:00+09:00" data="samplestringdatatrue" id="2" />
+	</Entry>
+</SecretStringDB>
