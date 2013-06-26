@@ -37,6 +37,25 @@ class SecretStringDBStringTest extends PHPUnit_Framework_TestCase
 //          $this->assertTrue(FALSE);
     }
 
+    /**
+     * @dataProvider notEqualIdProvider
+     */
+    public function testGetIdNotEqual($data, $create, $expire, $status, $id){
+
+        $secretstringdbstring = new SecretStringDBString($data,
+                $create,
+                $expire,
+                $status,
+                $id);
+        $this->assertEquals($data, $secretstringdbstring->getData());
+        $this->assertEquals($create, $secretstringdbstring->getCreate());
+        $this->assertEquals($expire, $secretstringdbstring->getExpire());
+        $this->assertEquals($status, $secretstringdbstring->getStatus());
+        $this->assertNotEquals($id, $secretstringdbstring->getId());
+
+        //          $this->assertTrue(FALSE);
+    }
+
     public function provider(){
         return array(
                 array("datastring",
@@ -58,7 +77,22 @@ class SecretStringDBStringTest extends PHPUnit_Framework_TestCase
                     new DateTime("2013-06-27T00:00:00+09:00"),
                     new DateTime("2013-06-28T00:00:00+09:00"),
                     false,
-                    9999999999999),
+                    1316134911),
+                array("asdpf0wumpvtuwqepovt7q-340utv34986^02346-72[4]721@7\5:k36:po;lkjretwert",
+                    new DateTime("2013-06-27T00:00:00+09:00"),
+                    new DateTime("2013-06-28T00:00:00+09:00"),
+                    false,
+                    2147483647),
+        );
+    }
+
+    public function notEqualIdProvider(){
+        return array(
+                array("asdpf0wumpvtuwqepovt7q-340utv34986^02346-72[4]721@7\5:k36:po;lkjretwert",
+                        new DateTime("2013-06-27T00:00:00+09:00"),
+                        new DateTime("2013-06-28T00:00:00+09:00"),
+                        false,
+                        2147483649),
         );
     }
 }
